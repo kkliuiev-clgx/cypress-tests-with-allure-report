@@ -1,0 +1,4 @@
+{
+    "baseUrl": "https://test.crewingcrm.com",
+    "integrationFolder": "cypress/tests"
+}

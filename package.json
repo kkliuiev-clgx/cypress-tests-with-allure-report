@@ -1,0 +1,30 @@
+{
+  "name": "cypress-tests-with-allure-reporter",
+  "version": "1.0.0",
+  "description": "cypress tests with allure reporter",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/cypress run --reporter mocha-allure-reporter",
+    "report": "./node_modules/.bin/allure generate allure-results --clean -o allure-report",
+    "wipe": "rm -r allure-results/ allure-report/"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "info@kliuiev.tk",
+  "license": "ISC",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "devDependencies": {
+    "cypress": "^3.8.0",
+    "cypress-file-upload": "^3.5.1"
+  },
+  "dependencies": {
+    "allure-commandline": "^2.13.0",
+    "mocha": "^6.2.2",
+    "mocha-allure-reporter": "^1.4.0"
+  }
+}
