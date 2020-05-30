@@ -1,25 +1,14 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This is will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+Cypress.Commands.add("checkPageAndLogIn", ({ username, password }) => {
+    cy.get('fieldset > :nth-child(1) > .ng-untouched').should('have.value', '')
+    cy.get('fieldset > :nth-child(2) > .ng-untouched').should('have.value', '')
+    cy.get('.background').should('be.visible')
+    cy.get('#remember').should('be.checked')
+    cy.get('#remember').click({ force: true })
+    cy.get('#remember').should('not.be.checked')
+    cy.get('.btn').click()
+    cy.get('fieldset > :nth-child(1) > .text-danger').should('contain.text', 'Field is required')
+    cy.get('fieldset > :nth-child(2) > .text-danger').should('contain.text', 'Field is required')
+    cy.get('fieldset > :nth-child(1) > .ng-untouched').type(username)
+    cy.get('fieldset > :nth-child(2) > .ng-untouched').type(password)
+    cy.get('.btn').click()
+})
