@@ -16,9 +16,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
     - name: Run tests
       uses: actions/setup-node@v2
       with:
         node-version: 15.x
     - run: npm ci
     - run: npm test
+    
+    - name: Generates report
+    - run: npm ci
+    - run: ls -la
