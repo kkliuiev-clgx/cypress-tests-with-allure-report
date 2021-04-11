@@ -45,3 +45,11 @@ jobs:
           port: 22
           source: "./cypress/videos/base.js.mp4"
           target: "video"
+    - name: Copy arttifact and Restart Server
+      uses: appleboy/ssh-action@master
+      with:
+         host: 35.233.168.216
+         username: ubuntu
+         key: ${{ secrets.SSH_KEY }}
+         port: 22
+         script: ./refresh2.sh && ./video.sh
