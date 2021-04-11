@@ -23,7 +23,15 @@ jobs:
         node-version: 15.x
     - run: npm ci
     - run: npm test
-    
-    - name: Generates report
-    - run: npm ci
+    - run: npm report
     - run: ls -la
+    
+    - name: Publish
+      uses: appleboy/scp-action@master
+      with:
+          host: 35.233.168.216
+          username: ubuntu
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          source: "./allure-report/*"
+          target: "report2"
