@@ -23,7 +23,7 @@ jobs:
         node-version: 15.x
     - run: npm ci
     - run: npm test
-    - run: npm report
+    - run: npm run report
     - run: ls -la
     
     - name: Publish
