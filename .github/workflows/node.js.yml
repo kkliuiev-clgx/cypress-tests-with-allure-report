@@ -35,3 +35,13 @@ jobs:
           port: 22
           source: "./allure-report/*"
           target: "report2"
+    
+    - name: Publish video
+      uses: appleboy/scp-action@master
+      with:
+          host: 35.233.168.216
+          username: ubuntu
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          source: "./cypress/videos/base.js.mp4"
+          target: "video"
